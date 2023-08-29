@@ -1,0 +1,13 @@
+version: '3.4'
+
+services:
+  todo:
+    image: postgre
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    command: ["sh", "-c", "pip install debugpy -t /tmp && python /tmp/debugpy --wait-for-client --listen 0.0.0.0:5678 -m flask run --no-debugger --no-reload --host 0.0.0.0 --port 5432"]
+    ports:
+      - 5432:5432
+    environment:
+      - FLASK_APP=-m run.py

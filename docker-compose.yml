@@ -1,0 +1,14 @@
+version: '3.4'
+
+services:
+  todo:
+    image: postgre
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: todo
+      POSTGRES_PASSWORD: 553781
+      POSTGRES_DB: postgre
